@@ -1,0 +1,45 @@
+body {
+  font-family: Rambla;
+}
+
+#masthead {
+  border-top: 4px solid #444;
+  text-align: center;
+}
+
+#masthead h1 {
+  font-size: 60px;
+  margin-top: 0;
+
+}
+#masthead #name {
+  margin-top: 40px;
+}
+
+#masthead #contact-details {
+}
+
+#masthead #contact-details ul {
+  list-style: none;
+  margin: 10px auto;
+
+}
+
+#masthead #contact-details li {
+  margin-right: 10px;
+  display: inline;
+  font-size: 25px;
+  line-height: 30px;
+}
+
+#masthead #contact-details li a {
+
+}
+
+#masthead #contact-details a:hover {
+  text-decoration: none;
+}
+#personal-statement {
+  margin-top: 15px;
+  text-align: center;
+}
