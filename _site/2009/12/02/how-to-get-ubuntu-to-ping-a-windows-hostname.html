@@ -1,0 +1,17 @@
+<p>I&#8217;m currently running ubuntu server in a virtual machine on my pc, and one of the annoying problems I&#8217;ve always had with ubuntu is that it never seems to be able to resolve the hostnames of machines running windows.</p>
+
+<p>After a little bit of digging I found a really simple solution <a href='http://ubuntuforums.org/showthread.php?t=88206'>in this forum topic</a></p>
+
+<blockquote>
+<p>All you have to do is: sudo nano /etc/nsswitch.conf</p>
+
+<p>change the line that says hosts: files dns</p>
+
+<p>to this: hosts: files wins dns</p>
+
+<p>(order does matter) finally, you need to install winbind sudo apt-get install winbind</p>
+
+<p>To enable windows to ping ubuntu you then need to install samba:</p>
+
+<p><code>sudo apt-get install samba winbind</code></p>
+</blockquote>

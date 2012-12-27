@@ -1,0 +1,34 @@
+<p>The other day I was trying to find a way to limit the amount of characters that a user could enter into a textbox. For some reason you can&#8217;t set the maxlength attribute on textareas, so I decided to make this little jquery snippet that truncates a user&#8217;s input once they go past a certain limit.</p>
+<!-- more -->
+<h1 id='theres_now_an_updated_version_of_this_script_here'>There&#8217;s now an updated version of this script <a href='http://sigswitch.com/2010/04/updated-textarea-maxlength-with-jquery-plugin/'>here</a></h1>
+
+<p>Save this snippet in a js file:</p>
+
+<pre><code>$(document).ready(function(){
+    $(&#39;textarea[maxlength]&#39;).keyup(function(){
+        var max = parseInt($(this).attr(’maxlength’));
+        if($(this).val().length &gt; max){
+            $(this).val($(this).val().substr(0, $(this).attr(&#39;maxlength&#39;)));
+        }
+
+        $(this).parent().find(&#39;.charsRemaining&#39;).html(&#39;You have &#39; + (max - $(this).val().length) + &#39; characters remaining&#39;);
+    });
+});</code></pre>
+
+<p>Just download and include <a href='http://www.jquery.com' title='Jquery'>jquery</a> like so:</p>
+
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;jquery.js &quot;&gt;&lt;/script&gt;</code></pre>
+
+<p>And then include the js file containing the above snippet Then, to limit a textarea do this:</p>
+
+<pre><code>&lt;textarea maxlength=&quot;255&quot;&gt;&lt;/textarea&gt;</code></pre>
+
+<p>If you want to show the user the &#8216;You have x characters remaining&#8217; message, then append an element with the &#8216;charsRemaining&#8217; class, like so:</p>
+
+<pre><code>&lt;p class=&quot;charsRemaining&quot;&gt;You have 255 characters remaining&lt;/p&gt;</code></pre>
+
+<p>You have to make sure that the p and textarea elements share the same parent, else the message won&#8217;t be updated.</p>
+
+<p><strong>UPDATE:</strong> Thanks for the parseInt() tip <a href='http://jasonseney.tumblr.com/'>Jason</a></p>
+
+<h1 id='theres_now_an_updated_version_of_this_script_here'>There&#8217;s now an updated version of this script <a href='http://sigswitch.com/2010/04/updated-textarea-maxlength-with-jquery-plugin/'>here</a></h1>

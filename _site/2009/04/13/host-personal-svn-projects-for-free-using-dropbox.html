@@ -1,0 +1,31 @@
+<p>If you&#8217;ve ever tried to find an <a href='http://en.wikipedia.org/wiki/Subversion_(software'>svn</a>) host that&#8217;s willing to host personal, private projects for free, you&#8217;re probably well aware that are practically none. One of the best ones used to be <a href='http://assembla.com'>Assembla</a>, until they changed their business model so that only OS projects could be hosted for free.</p>
+
+<p>Other free hosts include <a href='http://beanstalkapp.com'>beanstalkapp</a> and <a href='http://springloops.com'>Spring Loops</a>, both of whom give you at least one repository, 100mb of space and a few user accounts to play with. This is great for one project, but when you start another one / run out of disk space you have to create a new account with a different email address, a different url etc.</p>
+<!-- more -->
+<p>At the end of the day you&#8217;re just wasting time that you could be using to make the next awesome application. However there is an awesome (free) solution - <a href='http://getdropbox.com'>DropBox</a>. <a href='http://getdropbox.com'>Dropbox</a> is a cool program that lets you sync up to 2GB of files between computers (it even has a [very] basic revision control system that lets you download/revert to previous versions of a file). The awesomeness comes into play when you realise that it&#8217;s possible to create an svn repository <em>inside your dropbox folder</em>. You can then check out the svn repo locally using the url <code>file:///C:/path/to/dropbox/folder/myrepo</code>, and commit to it adhoc.</p>
+
+<p>Some of the major benefits of this are:</p>
+
+<ul>
+<li>It&#8217;s free</li>
+
+<li>You always have access to the repository, even when you&#8217;re offline!</li>
+
+<li>As soon as you come online the dropbox app swoops in and uploads the repo, backing it up on the dropbox servers and distributing it to your other computers</li>
+
+<li>You have 2GB of space to play with - if you take a look at the major svn hosts you&#8217;ll see that they&#8217;re charging at least $9 / month for this</li>
+
+<li>Did I mention it&#8217;s free?</li>
+</ul>
+
+<p>Of course some of the (major) downsides to this are:</p>
+
+<ul>
+<li>You don&#8217;t get as many features as you would in a product such as <a href='http://www.beanstalkapp.com/pricing'>beanstalkapp</a></li>
+
+<li>If you commit on one computer and then commit on another before dropbox has synced the files you may end up with a corrupted repository</li>
+</ul>
+
+<p>The last point is probably a good reason why you <strong>should not use this setup to collaborate with multiple people</strong>, but for syncing a personal project between work, home and a laptop :)</p>
+
+<p>It&#8217;s also worth noting that you can do this with just about any SCM system (inc. <a href='http://git-scm.com/'>git</a>)</p>

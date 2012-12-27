@@ -1,0 +1,61 @@
+<p>I recently had to upgrade an installation of magento 1.4.0 to version 1.4.1.1. As anybody who&#8217;s ever tried to upgrade magento will tell you, the upgrade path is usually less than ideal (For some people the only way to upgrade from 1.3 to 1.4 was to manually export / import their data into a new installation).</p>
+
+<p>As strange as it seems, it appears the most reliable way to upgrade an installation is to install the new version over <strong>a copy</strong> of the old version&#8217;s database. (Note, you should never attempt to install over the production database lest things go wrong!) Here&#8217;s a quick guide on how I managed to get the installation in question upgraded, hopefully it&#8217;ll work for you too! :)</p>
+<!-- more -->
+<h2 id='get_rid_of_any_coupon_codes'>Get rid of any coupon codes</h2>
+
+<p>If you try and upgrade magento without doing this then the installer will fail with a &#8220;foreign key constraint fails&#8221; error. You should make a note of your codes so that you can re-add them to your upgraded store.</p>
+
+<h2 id='copy_the_database'>Copy the database</h2>
+
+<p>In my experience the fastest way to get a copy of the database is to use the <code>mysqldump</code> command on the server over ssh.</p>
+
+<pre><code>mysqldump -u{username} -p {database_name} &gt; production_backup.sql</code></pre>
+
+<p>Obviously you should replace {username} and {database_name} with their appropriate values. You&#8217;ll also be asked for the db user&#8217;s password when the program connects to the mysql server. If you don&#8217;t have shell access on your server then you can always use another tool such as phpmyadmin, but it&#8217;s slower and less secure.</p>
+
+<h2 id='download_a_fresh_copy_of_magento_1411'>Download a fresh copy of Magento 1.4.1.1</h2>
+
+<p>We now need to download a fresh copy of magento and put it in a separate place from the production site (e.g. testing.{yoursite}.com) where we can run the upgrade safely. See the magento wiki for more info on <a href='http://www.magentocommerce.com/wiki/groups/227/installing_magento_via_shell_ssh'>downloading magento from a shell</a>.</p>
+
+<p>From now on I&#8217;ll refer to the directory you extracted the code to as the &#8220;upgrade test&#8221; directory. You should also create a separate database to run the upgrade on.</p>
+
+<h2 id='modify_the_magento_installer'>Modify the Magento Installer</h2>
+
+<p>One of the big issues with the installer supplied with magento is that they assume all of the tables it tries to create don&#8217;t exist (which isn&#8217;t the case).</p>
+
+<p>To get around this we run a quick find &amp; replace in the root of the new &#8220;upgrade test&#8221; magento installation:</p>
+
+<pre><code>find . \
+    -type f -name &quot;*.php&quot; \
+    -exec sed -r -i  \
+    &quot;s/CREATE TABLE \`?\{([^}]+)\}\`? \(/CREATE TABLE IF NOT EXISTS \`\{\1\}\` \(/g&quot; \
+    {} \;</code></pre>
+
+<p>If you&#8217;re not familiar with sed, this command basically looks in php files for the string</p>
+
+<pre><code>CREATE TABLE {table_name} (</code></pre>
+
+<p>and replaces it with</p>
+
+<pre><code>CREATE TABLE IF NOT EXISTS {table_name} (</code></pre>
+
+<p>You should execute it in your upgrade test directory, not in the production site dir.</p>
+
+<h2 id='run_the_installer'>Run the installer</h2>
+
+<p>If you browse to your testing installation (i.e. http://testing.yoursite.com) you should be redirected to the magento web installer, which should allow you to &#8220;install&#8221; magento.</p>
+
+<p><strong>When it asks you for a security / encryption key make sure you give the same key that your production install is using.</strong></p>
+
+<p>If you can&#8217;t remember what key your production install is using then have a look in app/etc/local.xml in your production installation. You should see something like:</p>
+
+<pre><code>&lt;![CDATA[fihfw9393rjW3493jwfwfj93jfww]]&gt;</code></pre>
+
+<p>In this example the key is <code>fihfw9393rjW3493jwfwfj93jfww</code>.</p>
+
+<h2 id='chillax'>Chillax!</h2>
+
+<p>At this point you should hopefully have a fully functioning version of 1.4.1, sans custom theme / installed modules / product images.</p>
+
+<p>To migrate the product images remove the media dir and copy the one from your production installation over. If something broke during the upgrade then you&#8217;ll need to find the cause of the problem and then re-attempt the upgrade afresh.</p>

@@ -1,0 +1,62 @@
+body {
+  font-family: Rambla;
+}
+
+#masthead {
+  border-top: 4px solid #444;
+  text-align: center;
+
+  h1 {
+    font-size: 60px;
+    margin-top: 0;
+  }
+  #name {
+    margin-top: 40px;
+  }
+
+  #contact-details {
+    ul {
+      list-style: none;
+      margin: 10px auto;
+    }
+
+    li {
+      margin-right: 10px;
+      display: inline;
+      font-size: 25px;
+      line-height: 30px;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  .subnav .nav {
+    margin-top: -40px;
+  }
+}
+
+
+#personal-statement {
+  margin-top: 15px;
+  text-align: center;
+}
+
+#posts .listing {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 25px;
+
+  li {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    list-style: none;
+    border-bottom: 1px solid #E7E7E7;
+
+    span {
+      float: right;
+      text-transform: uppercase;
+    }
+  }
+}

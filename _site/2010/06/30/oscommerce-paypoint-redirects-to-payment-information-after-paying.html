@@ -1,0 +1,25 @@
+<p>I was asked to do some work on an oscommerce site which was accepting payments from <a href='http://paypoint.net'>paypoint</a> (formally secpay) yet instead of redirecting the user to the &#8220;Thank you for your order&#8221; page it was sending them to the payment information page, and wasn&#8217;t classing the order as being paid for.</p>
+<!-- more -->
+<p>After a bit of debugging it turns out the problem stems from the paypoint-secpay merger and the fact that OSCommerce is a poorly supported hunk of junk. During a typical transaction paypoint will ask the user for their card details, and if the details check out it sends a request back to OSCommerce telling it that the transaction was a success. It will then display to the user whatever your server outputs. Thus your customers should see the &#8220;Thank you for your order&#8221; page appear under a url of &#8220;https://www.secpay.com/java-bin/ValCard&#8221;.</p>
+
+<p>When oscommerce receives the &#8220;the transaction succeeded&#8221; message from secpay it looks at the ip address the message came from, and tries to resolve it to a hostname to see if it came from secpay.com. Since the merger the ip address that paypoint are using ﻿(in this case it was 81.93.226.30) doesn&#8217;t resolve to secpay.com, in fact <a href='http://whois.domaintools.com/reverse-ip/?hostname=81.93.226.30'>it doesn&#8217;t resolve to anything</a>.</p>
+
+<p>If php can&#8217;t resolve an ip address to a hostname then it gives up and returns the ip, thus oscommerce was trying to check that &#8216;secpay.com&#8217; was the same as &#8216;81.93.226.30&#8217;, which it isn&#8217;t. To fix this I changed the before_process() ethod in the secpay payment module to look like so:</p>
+
+<pre><code>function before_process() {
+
+      if ($_POST[&#39;valid&#39;] == &#39;true&#39;) {
+          if ($remote_addr = $_SERVER[&#39;REMOTE_ADDR&#39;]) {
+          // Check that the request came from one of the secpay / paypoint servers
+              if (strpos($remote_addr, &#39;81.93.226&#39;) !== 0) {
+                tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, tep_session_name() . &#39;=&#39; . $HTTP_POST_VARS[tep_session_name()] . &#39;&amp;payment_error=&#39; . $this-&gt;code, &#39;SSL&#39;, false, false));
+          }
+        } else {
+          tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, tep_session_name() . &#39;=&#39; . $HTTP_POST_VARS[tep_session_name()] . &#39;&amp;payment_error=&#39; . $this-&gt;code, &#39;SSL&#39;, false, false));
+        }
+      }
+    }</code></pre>
+
+<p>Ignoring for a second the horrible use of php3/php4 conventions, the method now checks to see if the sender&#8217;s ip address begins with 81.93.226, as  <a href='http://whois.domaintools.com/81.93.226.30'>paypoint seem to own</a> that range.</p>
+
+<p>Hopefully this will save someone else the headache</p>
