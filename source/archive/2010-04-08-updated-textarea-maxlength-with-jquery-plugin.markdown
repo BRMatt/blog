@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: Updated textarea maxlength with Jquery plugin
 wordpress_id: 127
 wordpress_url: http://sigswitch.com/?p=127

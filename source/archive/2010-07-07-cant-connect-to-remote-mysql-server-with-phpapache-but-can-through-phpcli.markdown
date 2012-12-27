@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: Can't connect to remote mysql server with php/apache but can through php/cli
 wordpress_id: 144
 wordpress_url: http://that-matt.com/?p=144

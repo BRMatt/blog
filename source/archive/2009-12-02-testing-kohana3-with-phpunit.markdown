@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: Testing Kohana3 with PHPUnit
 wordpress_id: 113
 wordpress_url: http://sigswitch.com/?p=113

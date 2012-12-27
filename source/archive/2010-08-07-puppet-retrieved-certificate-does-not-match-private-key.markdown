@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: ! 'Puppet: Retrieved certificate does not match private key'
 wordpress_id: 163
 wordpress_url: http://that-matt.com/?p=163

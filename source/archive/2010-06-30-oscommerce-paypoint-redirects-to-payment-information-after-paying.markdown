@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: OSCommerce / Paypoint redirects to payment information after paying
 wordpress_id: 140
 wordpress_url: http://sigswitch.com/?p=140

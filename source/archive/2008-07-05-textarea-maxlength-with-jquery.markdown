@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: Textarea maxlength with Jquery
 wordpress_id: 6
 wordpress_url: http://sigswitch.com/?p=6

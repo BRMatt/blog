@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: Virtualbox - 1 differencing child hard disks
 wordpress_id: 99
 wordpress_url: http://sigswitch.com/2009/11/virtualbox-1-differencing-child-hard-disks/

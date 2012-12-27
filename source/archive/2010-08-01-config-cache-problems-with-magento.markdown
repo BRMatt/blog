@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: Config cache problems with Magento
 wordpress_id: 158
 wordpress_url: http://that-matt.com/?p=158

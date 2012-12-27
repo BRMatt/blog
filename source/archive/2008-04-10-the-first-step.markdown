@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: The first step...
 wordpress_id: 3
 wordpress_url: http://sigswitch.com/?p=3

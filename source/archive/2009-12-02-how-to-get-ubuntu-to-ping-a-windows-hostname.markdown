@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: How to get Ubuntu to ping a Windows hostname (and vice-versa)
 wordpress_id: 47
 wordpress_url: http://www.sigswitch.com/?p=47

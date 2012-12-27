@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: Host personal SVN projects for free using DropBox
 wordpress_id: 31
 wordpress_url: http://www.sigswitch.com/?p=31

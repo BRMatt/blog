@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Upgrading to Magento 1.4.1.1 from 1.4.0
 wordpress_id: 179
 wordpress_url: http://that-matt.com/?p=179

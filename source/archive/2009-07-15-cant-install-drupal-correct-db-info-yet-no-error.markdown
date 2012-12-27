@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: Can't Install Drupal? Correct DB info yet no error?
 wordpress_id: 90
 wordpress_url: http://sigswitch.com/2009/07/cant-install-drupal-correct-db-info-yet-no-error/
