@@ -1,8 +1,5 @@
 ---
-
-title: Can't connect to remote mysql server with php/apache but can through php/cli
-wordpress_id: 144
-wordpress_url: http://that-matt.com/?p=144
+title: Apache can't connect to remote MySQL server, but scripts can
 date: 2010-07-07 22:00:50.000000000 +01:00
 ---
 Today at work we were migrating some sites to a new server infrastructure with 
