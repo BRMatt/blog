@@ -56,13 +56,12 @@ set :images_dir, 'images'
 set :fonts_dir, 'webfonts'
 
 activate :blog do |blog|
+  blog.layout  = "article"
   blog.sources = "archive/:year-:month-:day-:title.html"
 end
 
 # Build-specific configuration
 configure :build do
-
-
   # For example, change the Compass output style for deployment
   # activate :minify_css
 
