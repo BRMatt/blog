@@ -1,19 +1,47 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    
+
     <!-- Always force latest IE rendering engine or request Chrome Frame -->
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     
     <!-- Use title if it's in the page YAML frontmatter -->
     <title><%= data.page.title || "The Middleman" %></title>
-    
+
     <%= stylesheet_link_tag "normalize", "all" %>
     <%= javascript_include_tag  "all" %>
+    <link href='http://fonts.googleapis.com/css?family=Rambla' rel='stylesheet' type='text/css'>
   </head>
-  
   <body class="<%= page_classes %>">
+    <div id="masthead">
+      <div class="container">
+        <div class="row">
+          <div id="name" class="span8 offset2">
+            <h1>Matt Button</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div id="contact-details" class="span8 offset2">
+            <ul class="vcard">
+              <li><a href="http://twitter.com/BRMatt" title="@BRMatt" class="ss-icon ss-social-circle">twitter</a></li>
+              <li><a href="https://github.com/BRMatt" title="BRMatt" class="ss-icon ss-social-circle">octocat</a></li>
+              <li><a href="mailto:chat@that-matt.com" title="chat@that-matt.com" class="email ss-icon ss-social-circle">email</a></li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="subnav span8 offset2">
+            <ul class="nav nav-tabs">
+              <li class="active"> <a href="#">Posts</a> </li>
+              <li class=""> <a href="#">About</a> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <%= yield %>
   </body>
 </html>
