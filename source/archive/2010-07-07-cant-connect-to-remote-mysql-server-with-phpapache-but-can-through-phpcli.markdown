@@ -33,6 +33,4 @@ but this isn't a permanent solution and won't persist through a reboot
 
 However, if you're willing to do a bit of digging there are 
 [SEL options](http://www.beginlinux.com/server_training/web-server/976-apache-and-selinux) 
-you can change to [grant apache access to remote database servers](http://www.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/6-Beta/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-Booleans-Configuring_Booleans.html), and if you have a few hours to kill, there's also [the fedora documentation](http://docs.fedoraproject.org/en-US/Fedora/13/html/SELinux_FAQ/index.html). Hopefully this'll save someone else the headache we had!http://docs.fedoraproject.org/en-US/Fedora/13/html/SELinux_FAQ/index.html">the fedora documentation</a>.
-
-Hopefully this'll save someone else the headache we had!
+you can change to [grant apache access to remote database servers](http://www.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/6-Beta/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-Booleans-Configuring_Booleans.html), and if you have a few hours to kill, there's also [the fedora documentation](http://docs.fedoraproject.org/en-US/Fedora/13/html/SELinux_FAQ/index.html). Hopefully this'll save someone else the headache we had!
