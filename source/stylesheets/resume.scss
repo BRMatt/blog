@@ -1,5 +1,7 @@
 body {
-  font-family: Rambla;
+  font-family: Lora, serif;
+  font-size: 17px;
+  line-height: 22px;
 }
 
 #masthead {
@@ -9,6 +11,14 @@ body {
   h1 {
     font-size: 60px;
     margin-top: 0;
+    a {
+      color: #333;
+    }
+    a:hover {
+      color: #222;
+      text-decoration: none;
+    }
+
   }
   #name {
     margin-top: 40px;
@@ -33,7 +43,7 @@ body {
   }
 
   .subnav .nav {
-    margin-top: -40px;
+    //margin-top: -40px;
   }
 }
 
@@ -59,4 +69,14 @@ body {
       text-transform: uppercase;
     }
   }
+}
+
+p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+h2, h3, h4, h5 {
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
