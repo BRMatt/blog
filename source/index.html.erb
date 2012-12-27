@@ -16,7 +16,7 @@ title: Welcome to Middleman
           <div class="span8 offset2">
             <ol class="listing">
               <% blog.articles.each do |article| %>
-              <li><span><%= article.date.strftime('%b %e %Y') %></span><a href="<%= article.url %>"><%= article.title %></a></li>
+                <li><time datetime="<%= article.date.xmlschema %>"><%= article.date.strftime('%b %e %Y') %></time><a href="<%= article.url %>"><%= article.title %></a></li>
               <% end %>
             </ol>
           </div>

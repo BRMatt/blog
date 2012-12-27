@@ -8,6 +8,10 @@ body {
   padding-top: 40px;
   border-top: 4px solid #444;
 
+  a {
+    text-decoration: none;
+  }
+
   h1 {
     line-height: 25px;
     font-size: 21px;
@@ -24,10 +28,6 @@ body {
       text-decoration: none;
     }
 
-  }
-
-  .subnav .nav {
-    //margin-top: -40px;
   }
 
   #contact-details {
@@ -57,15 +57,16 @@ body {
     list-style: none;
     border-bottom: 1px solid #E7E7E7;
 
-    span {
+    time {
       float: right;
-      text-transform: uppercase;
+
     }
   }
 }
 
 a {
   color: #444;
+  text-decoration: underline;
 }
 
 a:hover {
@@ -78,11 +79,27 @@ p {
 
 h1, h2, h3, h4, h5 {
   font-size: 17px;
+
+  time {
+    font-weight: none;
+    margin-left: 10px;
+    color: #888;
+    font-size: 65%;
+  }
+}
+
+time {
+  text-transform: uppercase;
 }
 
 h2, h3, h4, h5 {
   margin-bottom: 10px;
 }
+
 .page-title {
   margin-bottom: 22px;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+  cursor: pointer;
 }
