@@ -17,25 +17,19 @@
     <div id="masthead">
       <div class="container">
         <div class="row">
-          <div id="name" class="span8 offset2">
-            <h1><%= link_to "Matt Button", "/" %></h1>
-          </div>
-        </div>
-        <div class="row">
-          <div id="contact-details" class="span8 offset2">
-            <ul class="vcard">
-              <li><a href="http://twitter.com/BRMatt" title="@BRMatt" class="ss-icon ss-social-circle">twitter</a></li>
-              <li><a href="https://github.com/BRMatt" title="BRMatt" class="ss-icon ss-social-circle">octocat</a></li>
-              <li><a href="mailto:chat@that-matt.com" title="chat@that-matt.com" class="email ss-icon ss-social-circle">email</a></li>
-
-            </ul>
-          </div>
-        </div>
-        <div class="row">
           <div class="subnav span8 offset2">
             <ul class="nav nav-tabs">
-              <li class="active"> <a href="#">Posts</a> </li>
-              <li class=""> <a href="#">About</a> </li>
+              <li><h1><% link_to "/" do %>Matt Button <span>Coffee, Code, Cooking</span><% end %></h1></li>
+              <li id="contact-details" class="pull-right">
+                <ul>
+                  <li ><a href="http://twitter.com/BRMatt" title="@BRMatt" class="ss-icon ss-social-circle">twitter</a></li>
+                  <li ><a href="https://github.com/BRMatt" title="BRMatt" class="ss-icon ss-social-circle">octocat</a></li>
+                  <li ><a href="mailto:chat@that-matt.com" title="chat@that-matt.com" class="email ss-icon ss-social-circle">email</a></li>
+                </ul>
+              </li>
+              <li class="pull-right"> <a href="#">About</a> </li>
+              <li class="active pull-right"> <a href="#">Posts</a> </li>
+
             </ul>
           </div>
         </div>

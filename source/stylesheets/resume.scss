@@ -1,16 +1,21 @@
 body {
   font-family: Lora, serif;
-  font-size: 17px;
-  line-height: 22px;
+  font-size: 15px;
+  line-height: 20px;
 }
 
 #masthead {
+  padding-top: 40px;
   border-top: 4px solid #444;
-  text-align: center;
 
   h1 {
-    font-size: 60px;
-    margin-top: 0;
+    line-height: 25px;
+    font-size: 21px;
+    margin: 0;
+    span {
+      font-size: 60%;
+      color: #CECECE;
+    }
     a {
       color: #333;
     }
@@ -20,30 +25,18 @@ body {
     }
 
   }
-  #name {
-    margin-top: 40px;
-  }
-
-  #contact-details {
-    ul {
-      list-style: none;
-      margin: 10px auto;
-    }
-
-    li {
-      margin-right: 10px;
-      display: inline;
-      font-size: 25px;
-      line-height: 30px;
-    }
-
-    a:hover {
-      text-decoration: none;
-    }
-  }
 
   .subnav .nav {
     //margin-top: -40px;
+  }
+
+  #contact-details {
+    margin-left: 15px;
+
+    ul {
+      margin: -29px 0 0 0;
+      list-style: none;
+    }
   }
 }
 
@@ -71,12 +64,25 @@ body {
   }
 }
 
+a {
+  color: #444;
+}
+
+a:hover {
+  color: lighten(#444, 20%)
+}
+
 p {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 10px 20px 10px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-size: 17px;
 }
 
 h2, h3, h4, h5 {
-  margin-top: 30px;
   margin-bottom: 10px;
+}
+.page-title {
+  margin-bottom: 22px;
 }
