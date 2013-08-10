@@ -1,0 +1,62 @@
+
+// Links
+$link-color:           #21759b;
+$link-color-hover:     darken($link-color, 20);
+
+$font-color: #444;
+$font-stack: 'Open Sans', Helvetica, Arial, sans-serif;
+
+$font-size: 18px;
+$vertical-baseline-1: 24px;
+$vertical-baseline-2: 48px;
+
+$ev-baseline-1: 24;
+$ev-baseline-2: 48;
+
+$line-height:  (24/14);
+$line-height2: (48/14);
+
+// Clearing floats like a boss h5bp.com/q
+@mixin clear {
+    zoom: 1;
+    &:before, &:after {
+        display: table;
+        content: "";
+    }
+    &:after {
+        clear: both;
+    }
+}
+.clear { 
+    @include clear;
+}
+
+
+
+// Baseline, measured in pixels
+// The value should be the same as the font-size value for the html element
+// If the html element's font-size is set to 62.5% (of the browser's default font-size of 16px),
+// then the variable below would be 10px.
+$baseline-px: 16px;
+
+@mixin rem($property, $px-values) {
+  // Convert the baseline into rems
+  $baseline-rem: $baseline-px / 1rem * 1;
+  // Print the first line in pixel values
+  #{$property}: $px-values;
+  // If there is only one (numeric) value, return the property/value line for it.
+  @if type-of($px-values) == "number" {
+    #{$property}: $px-values / $baseline-rem; }
+  @else {
+    // Create an empty list that we can dump values into
+    $rem-values: ();
+    @each $value in $px-values {
+      // If the value is zero or not a number, return it
+      @if $value == 0 or type-of( $value ) != "number" {
+        $rem-values: append($rem-values, $value); }
+      @else {
+        $rem-values: append($rem-values, $value / $baseline-rem); } }
+    // Return the property and its list of converted values
+    #{$property}: $rem-values; }
+}
+

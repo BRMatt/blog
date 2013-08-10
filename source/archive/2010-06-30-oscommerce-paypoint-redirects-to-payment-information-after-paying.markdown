@@ -31,19 +31,21 @@ the ip, thus oscommerce was trying to check that 'secpay.com' was the same as
 '81.93.226.30', which it isn't. To fix this I changed the before\_process() 
 ethod in the secpay payment module to look like so:
 
-    function before_process() {
-    
-          if ($_POST['valid'] == 'true') {
-              if ($remote_addr = $_SERVER['REMOTE_ADDR']) {
-              // Check that the request came from one of the secpay / paypoint servers
-                  if (strpos($remote_addr, '81.93.226') !== 0) {
-                    tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, tep_session_name() . '=' . $HTTP_POST_VARS[tep_session_name()] . '&payment_error=' . $this->code, 'SSL', false, false));
-              }
-            } else {
-              tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, tep_session_name() . '=' . $HTTP_POST_VARS[tep_session_name()] . '&payment_error=' . $this->code, 'SSL', false, false));
-            }
+```php
+<?php
+function before_process() {
+    if ($_POST['valid'] == 'true') {
+          if ($remote_addr = $_SERVER['REMOTE_ADDR']) {
+          // Check that the request came from one of the secpay / paypoint servers
+              if (strpos($remote_addr, '81.93.226') !== 0) {
+                tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, tep_session_name() . '=' . $HTTP_POST_VARS[tep_session_name()] . '&payment_error=' . $this->code, 'SSL', false, false));
           }
+        } else {
+          tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, tep_session_name() . '=' . $HTTP_POST_VARS[tep_session_name()] . '&payment_error=' . $this->code, 'SSL', false, false));
         }
+      }
+    }
+```
 
 Ignoring for a second the horrible use of php3/php4 conventions, the method 
 now checks to see if the sender's ip address begins with 81.93.226, as 

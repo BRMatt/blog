@@ -1,5 +1,160 @@
-/**
- *= require 'bootstrap'
- *= require 'bootstrap-responsive'
- *= require 'resume'
- */
+@import "_reset";
+@import "_preboot";
+@import "syntax-highlighting";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+html {
+  font-size: 87.5%;
+}
+
+body {
+  @include rem('font-size', $font-size);
+  font-family: $font-stack;
+  text-rendering: optimizeLegibility;
+  color: $font-color;
+}
+
+#page {
+  @include rem('padding', 0 $vertical-baseline-1);
+  @media screen and (min-width: 600px) {
+    @include clear();
+    margin: 0 auto;
+    @include rem('max-width', 760px);
+  }
+
+  @include rem('font-size', $font-size);
+}
+
+a {
+  outline: none;
+  color: $link-color;
+  &:hover {
+    color: $link-color-hover;
+  }
+}
+
+header {
+  margin-top: 10px;
+
+  nav {
+    float: right;
+  }
+
+  nav a {
+    display: block;
+    float: left;
+    @include rem('padding', 10px);
+    @include clear();
+  }
+}
+
+section {
+  @include clear();
+  clear: both;
+}
+
+section, article {
+  @include clear();
+  clear:both;
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @include rem('margin', $vertical-baseline-1 0);
+    line-height: $line-height;
+  }
+  h1 {
+    @include rem('font-size', 21px);
+    line-height: ($ev-baseline-1/16);
+  }
+  h2 {
+    @include rem('font-size', 18px);
+    line-height: ($ev-baseline-1/15);
+  }
+  h3 {
+    @include rem('font-size'  , 16px);
+    line-height: ($ev-baseline-1/13);
+  }
+  h4 {
+    @include rem('font-size', 14px);
+    line-height: ($ev-baseline-1/13);
+  }
+  h5 {
+    @include rem('font-size', 13px);
+    line-height: ($ev-baseline-1/13);
+  }
+  h6 {
+    @include rem('font-size', 12px);
+    line-height: ($ev-baseline-1/13);
+  }
+  p {
+    @include rem('margin', 0 0 $vertical-baseline-1 0);
+    line-height: $line-height;
+  }
+  pre {
+    @include rem('padding', 15px);
+    line-height: $line-height;
+    width: 100%;
+  }
+  blockquote {
+    @include rem('padding', $vertical-baseline-1);
+    font-style: italic;
+  }
+  ol, ul {
+    @include rem('margin', 0 0 $vertical-baseline-1 0);
+    line-height: $line-height;
+  }
+  ul ul, ol ol, ul ol, ol ul {
+    margin-bottom: 0;
+  }
+  ul {
+    list-style: disc outside;
+  }
+  ol {
+    list-style: decimal outside;
+  }
+  li {
+    @include rem('margin', 0 0 0 $vertical-baseline-1);
+  }
+}
+
+article {
+  h1 {
+    position: relative;
+  }
+
+  h1 time {
+    float: right;
+    color: lighten($font-color, 50%);
+  }
+}
+
+#posts ol {
+  list-style: none;
+
+  li {
+    margin-top: 10px;
+    margin-left: 0;
+    position: relative;
+
+    @media screen and (max-width: 900px) {
+      border-top: 1px solid #F0F0F0;
+    }
+  }
+}
+
+#posts li {
+  &:hover {
+    time {
+      color: lighten($font-color, 35%);
+    }
+  }
+
+  time {
+    color: lighten($font-color, 50%);
+    float: right;
+  }
+}
