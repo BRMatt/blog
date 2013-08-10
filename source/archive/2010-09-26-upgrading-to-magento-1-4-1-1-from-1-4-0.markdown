@@ -30,7 +30,9 @@ upgraded store.
 In my experience the fastest way to get a copy of the database is to use the
 `mysqldump` command on the server over ssh.
 
-    mysqldump -u{username} -p {database_name} > production_backup.sql
+```bash
+mysqldump -u{username} -p {database_name} > production_backup.sql
+```
 
 Obviously you should replace {username} and {database\_name} with their 
 appropriate values. You'll also be asked for the db user's password when the 
@@ -56,20 +58,26 @@ assume all of the tables it tries to create don't exist (which isn't the case).
 
 To get around this we run a quick find & replace in the root of the new "upgrade test" magento installation:
 
-    find . \
-        -type f -name "*.php" \
-        -exec sed -r -i  \
-        "s/CREATE TABLE \`?\{([^}]+)\}\`? \(/CREATE TABLE IF NOT EXISTS \`\{\1\}\` \(/g" \
-        {} \;
+```bash
+find . \
+    -type f -name "*.php" \
+    -exec sed -r -i  \
+    "s/CREATE TABLE \`?\{([^}]+)\}\`? \(/CREATE TABLE IF NOT EXISTS \`\{\1\}\` \(/g" \
+    {} \;
+```
 
 If you're not familiar with sed, this command basically looks in php files for 
 the string 
 
-	CREATE TABLE {table_name} (
+```sql
+CREATE TABLE {table_name} (
+```
 
 and replaces it with 
 
-	CREATE TABLE IF NOT EXISTS {table_name} (
+```sql
+CREATE TABLE IF NOT EXISTS {table_name} (
+```
 
 You should execute it in your upgrade test directory, not in the production site dir.
 
@@ -84,7 +92,9 @@ you should be redirected to the magento web installer, which should allow you to
 If you can't remember what key your production install is using then have a look 
 in app/etc/local.xml in your production installation. You should see something like:
 
-	<![CDATA[fihfw9393rjW3493jwfwfj93jfww]]>
+```html
+<![CDATA[fihfw9393rjW3493jwfwfj93jfww]]>
+```
 
 In this example the key is `fihfw9393rjW3493jwfwfj93jfww`.
 

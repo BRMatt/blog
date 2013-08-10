@@ -36,8 +36,10 @@ a {
 header {
   padding: 22px 0 44px;
 
-  h1 {
+  .site-title {
+    display: block;
     float: left;
+    font-weight: 700;
   }
 
   nav {
@@ -49,7 +51,7 @@ header {
     text-align: center;
     padding: 20px 0 0px;
 
-    h1 {
+    .site-title {
       float: none;
       text-align: center;
       margin-bottom: 18px
@@ -117,7 +119,13 @@ section, article {
   }
   blockquote {
     @include rem('padding', $vertical-baseline-1);
+    @include rem('margin', 0 0 $vertical-baseline-1 0);
     font-style: italic;
+    border-left: 5px solid darken(#f8f8f8, 10);
+
+    p:last-child {
+      margin-bottom: 0;
+    }
   }
   ol, ul {
     @include rem('margin', 0 0 $vertical-baseline-1 0);
@@ -163,21 +171,24 @@ article {
 }
 
 #posts li {
+  $post-link-color: #727272;
+  $post-link-hover-color: darken($post-link-color, 25%);
+
   a {
-    color: #727272;
+    color: $post-link-color;
     display: block
   }
   a:hover{
-    color: darken(#727272, 20);
+    color: $post-link-hover-color;
   }
   &:hover {
     time {
-      color: lighten($font-color, 35%);
+      color: $post-link-hover-color;
     }
   }
 
   time {
-    color: lighten($font-color, 50%);
+    color: lighten($font-color, 40%);
     float: right;
   }
 }

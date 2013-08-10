@@ -41,11 +41,23 @@
 # activate :automatic_image_sizes
 
 # Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  def meta_description(page)
+    if page.meta && page.meta.description
+      page.meta.description
+    else
+      "Matt Button, Ruby Developer in the UK"
+    end
+  end
+
+  def meta_keywords(page)
+    if page.meta && page.meta.tags
+      page.meta.tags
+    else
+      "ruby, PHP, kohana, kohanaphp, ruby on rails, memberful, membership, programming, university"
+    end
+  end
+end
 
 set :css_dir, 'stylesheets'
 

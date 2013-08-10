@@ -17,62 +17,66 @@ thought I'd begin by refactoring the original code into a jquery plugin:
 
 <!-- more -->
 
-    jQuery.fn.limitMaxlength = function(options){
-    
-        var settings = jQuery.extend({
-            attribute: "maxlength",
-            onLimit: function(){},
-            onEdit: function(){}
-        }, options);
-    
-        // Event handler to limit the textarea
-        var onEdit = function(){
-            var textarea = jQuery(this);
-            var maxlength = parseInt(textarea.attr(settings.attribute));
-    
-            if(textarea.val().length > maxlength){
-                textarea.val(textarea.val().substr(0, maxlength));
-    
-                // Call the onlimit handler within the scope of the textarea
-                jQuery.proxy(settings.onLimit, this)();
-            }
-    
-            // Call the onEdit handler within the scope of the textarea
-            jQuery.proxy(settings.onEdit, this)(maxlength - textarea.val().length);
+```javascript
+jQuery.fn.limitMaxlength = function(options){
+
+    var settings = jQuery.extend({
+        attribute: "maxlength",
+        onLimit: function(){},
+        onEdit: function(){}
+    }, options);
+
+    // Event handler to limit the textarea
+    var onEdit = function(){
+        var textarea = jQuery(this);
+        var maxlength = parseInt(textarea.attr(settings.attribute));
+
+        if(textarea.val().length > maxlength){
+            textarea.val(textarea.val().substr(0, maxlength));
+
+            // Call the onlimit handler within the scope of the textarea
+            jQuery.proxy(settings.onLimit, this)();
         }
-    
-        this.each(onEdit);
-    
-        return this.keyup(onEdit)
-                    .keydown(onEdit)
-                    .focus(onEdit)
-                    .live('input paste', onEdit);
+
+        // Call the onEdit handler within the scope of the textarea
+        jQuery.proxy(settings.onEdit, this)(maxlength - textarea.val().length);
     }
+
+    this.each(onEdit);
+
+    return this.keyup(onEdit)
+                .keydown(onEdit)
+                .focus(onEdit)
+                .live('input paste', onEdit);
+}
+```
 
 And here's an example of it in use, limiting all textareas in the document and 
 updating a p element with the id of charsRemaining with... the number of characters 
 remaining. It also sets the textarea bg color to red when the user tries to 
 exceed the maxlength.
 
-    $(document).ready(function(){
-    
-        var onEditCallback = function(remaining){
-            $(this).siblings('.charsRemaining').text("Characters remaining: " + remaining);
-    
-            if(remaining > 0){
-                $(this).css('background-color', 'white');
-            }
+```javascript
+$(document).ready(function(){
+
+    var onEditCallback = function(remaining){
+        $(this).siblings('.charsRemaining').text("Characters remaining: " + remaining);
+
+        if(remaining > 0){
+            $(this).css('background-color', 'white');
         }
-    
-        var onLimitCallback = function(){
-            $(this).css('background-color', 'red');
-        }
-    
-        $('textarea[maxlength]').limitMaxlength({
-            onEdit: onEditCallback,
-            onLimit: onLimitCallback
-        });
+    }
+
+    var onLimitCallback = function(){
+        $(this).css('background-color', 'red');
+    }
+
+    $('textarea[maxlength]').limitMaxlength({
+        onEdit: onEditCallback,
+        onLimit: onLimitCallback
     });
+});
+```
 
 And here's a [jsbin paste with a quick demo](http://jsbin.com/ufuji3/9). 
 

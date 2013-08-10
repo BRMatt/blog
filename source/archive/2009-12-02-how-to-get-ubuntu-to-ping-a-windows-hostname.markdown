@@ -13,17 +13,23 @@ After a little bit of digging I found a really simple solution
 [in this forum topic](http://ubuntuforums.org/showthread.php?t=88206)
 
 > All you have to do is:
->     sudo nano /etc/nsswitch.conf
+>
+> `sudo nano /etc/nsswitch.conf`
 > 
 > change the line that says
->     hosts: files dns
+>
+> `hosts: files dns`
 > 
 > to this:
->     hosts: files wins dns
+>
+> `hosts: files wins dns`
 > 
 > (order does matter) finally, you need to install winbind
->     sudo apt-get install winbind
+>
+> `sudo apt-get install winbind`
 >
 > To enable windows to ping ubuntu you then need to install samba:
 >
->    `sudo apt-get install samba winbind`
+> `sudo apt-get install samba winbind`
+
+Job done.
