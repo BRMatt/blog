@@ -108,7 +108,10 @@ section, article {
     line-height: $line-height;
   }
   pre {
+    border-top: 5px solid darken(#f8f8f8, 10);
+    background-color: darken(#f8f8f8, 5);
     @include rem('padding', 15px);
+    @include rem('margin', 0 0 $vertical-baseline-1 0);
     line-height: $line-height;
     width: 100%;
   }
@@ -160,6 +163,13 @@ article {
 }
 
 #posts li {
+  a {
+    color: #727272;
+    display: block
+  }
+  a:hover{
+    color: darken(#727272, 20);
+  }
   &:hover {
     time {
       color: lighten($font-color, 35%);
