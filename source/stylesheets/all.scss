@@ -34,17 +34,30 @@ a {
 }
 
 header {
-  margin-top: 10px;
+  padding: 22px 0 44px;
+
+  h1 {
+    float: left;
+  }
 
   nav {
     float: right;
   }
 
-  nav a {
-    display: block;
-    float: left;
-    @include rem('padding', 10px);
-    @include clear();
+
+  @media screen and (max-width: 400px) {
+    text-align: center;
+    padding: 20px 0 0px;
+
+    h1 {
+      float: none;
+      text-align: center;
+      margin-bottom: 18px
+    }
+    nav {
+      float: none;
+      margin: 0 auto;
+    }
   }
 }
 
