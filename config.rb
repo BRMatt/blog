@@ -68,7 +68,7 @@ set :images_dir, 'images'
 set :fonts_dir, 'webfonts'
 
 activate :blog do |blog|
-  blog.layout  = "article"
+  blog.layout  = "layouts/article"
   blog.sources = "archive/:year-:month-:day-:title.html"
 end
 
@@ -100,3 +100,16 @@ configure :build do
   # Or use a different image path
   # set :http_path, "/Content/images/"
 end
+
+# Activate sync extension
+activate :sync do |sync|
+  sync.fog_provider = 'AWS'
+  sync.fog_directory = 'that-matt.com' # Your bucket name
+  sync.fog_region = 'us-east-1'
+  sync.aws_access_key_id = ENV['S3_ACCESS_KEY_ID']
+  sync.aws_secret_access_key = ENV['S3_SECRET_ACCESS_KEY']
+  sync.existing_remote_files = 'delete'
+  # sync.gzip_compression = false # Automatically replace files with their equivalent gzip compressed version
+  # sync.after_build = false # Disable sync to run after Middleman build ( defaults to true )
+end
+
