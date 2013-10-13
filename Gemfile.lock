@@ -84,10 +84,6 @@ GEM
       multi_json (~> 1.0)
       rack-livereload
     middleman-more (3.1.5)
-    middleman-s3_redirect (3.0.2)
-      fog
-      middleman-core (>= 3.0.0)
-      parallel
     middleman-sprockets (3.1.4)
       middleman-core (>= 3.0.14)
       middleman-more (>= 3.0.14)
@@ -108,7 +104,6 @@ GEM
     net-ssh (2.7.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
-    parallel (0.8.4)
     rack (1.5.2)
     rack-livereload (0.3.15)
       rack
@@ -150,7 +145,6 @@ DEPENDENCIES
   middleman (~> 3.1)
   middleman-blog
   middleman-livereload (~> 3.1.0)
-  middleman-s3_redirect
   middleman-sync (~> 3.0.12)
   middleman-syntax
   redcarpet

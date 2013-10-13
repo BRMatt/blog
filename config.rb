@@ -78,6 +78,14 @@ activate :syntax
 set :markdown_engine, :redcarpet
 set :markdown, :fenced_code_blocks => true, :smartypants => true
 
+redirect '2010/08/puppet-retrieved-certificate-does-not-match-private-key/index.html', to: '/2010/08/07/puppet-retrieved-certificate-does-not-match-private-key.html'
+redirect '2008/07/textarea-maxlength-with-jquery/index.html', to: '/2008/07/05/textarea-maxlength-with-jquery.html'
+redirect '2009/12/how-to-get-ubuntu-to-ping-a-windows-hostname/index.html', to: '/2009/12/02/how-to-get-ubuntu-to-ping-a-windows-hostname.html'
+redirect '2010/04/updated-textarea-maxlength-with-jquery-plugin/index.html', to: '/2010/04/08/updated-textarea-maxlength-with-jquery-plugin.html'
+redirect '2009/04/host-personal-svn-projects-for-free-using-dropbox/index.html', to: '/2009/04/13/host-personal-svn-projects-for-free-using-dropbox.html'
+redirect '2010/08/config-cache-problems-with-magento/index.html', to: '/2010/08/01/config-cache-problems-with-magento.html'
+redirect '2009/11/virtualbox-1-differencing-child-hard-disks/', to: '/2009/11/07/virtualbox-1-differencing-child-hard-disks.html'
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
