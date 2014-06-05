@@ -15,7 +15,7 @@ line / shell worked absolutely fine. After a couple of hours of debugging,
 head bashing and confusion we found the solution at the bottom of one of those 
 very very long [experts exchange](http://www.experts-exchange.com/Database/MySQL/Q_22606034.html) threads. 
 
-It turns out that some linux distros has a neat little access control system 
+It turns out that some linux distros have a neat little access control system 
 called SELinux which was blocking communication by apache to remote database servers. 
 The aforementioned exchange thread suggests disabling SELinux entirely by executing
 
