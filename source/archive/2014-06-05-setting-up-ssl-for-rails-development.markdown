@@ -1,6 +1,6 @@
 ---
 title: Setting up SSL for Rails development
-date: 2014-06-05 15:45:25.000000000 +01:00
+date: 2014-06-05 00:00:00.000000000 00:00
 meta:
   description: Basic SSL setup for Rail development using nginx for SSL termination.
   tags: ruby, rails, ror, ruby on rails, ssl, nginx, wildcard ssl, self-signed certificate, self-signed ssl, development
