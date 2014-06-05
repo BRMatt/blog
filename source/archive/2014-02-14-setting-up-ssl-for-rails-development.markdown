@@ -17,7 +17,7 @@ The bare bones nginx config for an SSL server is as follows:
 ```
 server {
     listen 443 ssl;
-    server_name my.app.local;
+    server_name *.app.local;
 
     ssl on;
     ssl_certificate /etc/nginx/ssl/server.crt;
@@ -25,7 +25,7 @@ server {
 
 
     location / {
-        proxy_pass http://my.app.local:3000;
+        proxy_pass http://127.0.0.1:3000;
         proxy_set_header Host $host:$server_port;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-Ssl on;
@@ -36,11 +36,11 @@ server {
 ```
 
 This assumes you've dumped the SSL certs you generated earlier into
-`/etc/nginx/ssl`. The headers the location block set are as follows:
+`/etc/nginx/ssl`. If you're not using a wildcard SSL certificate then
+remove the asterisk `server_name`. 
+
+The headers in the location block set are as follows:
 
 * `Host $host:$server_port` - Unless you pass this header rails will try to use ssl over whatever port its server was started on
 * `X-Real-IP $remote_addr` - Does what it says on the tin
 * `X-Forwarded-Ssl` / `X-Forwarded-Proto https` / `X-SSL 1` - This tells Rails to use the automatically use the https protocol on all links
-
-Apparently if you want to have wildcard subdomains with SSL you need to have a separate `server` block for each
-subdomain, though I don't have time to check whether this is true.
