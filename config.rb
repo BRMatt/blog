@@ -46,7 +46,7 @@ helpers do
     if page.meta && page.meta.description
       page.meta.description
     else
-      "Matt Button, Ruby Developer in the UK"
+      "Matt Button, Ruby Developer in London, UK"
     end
   end
 
