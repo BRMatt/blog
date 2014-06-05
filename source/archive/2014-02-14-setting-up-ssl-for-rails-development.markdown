@@ -1,8 +1,7 @@
 ---
-title: Developing a Rails application over SSL
+title: Setting up SSL for Rails development
+date: 2014-02-14 15:45:25.000000000 +01:00
 ---
-
-These are mostly notes of mine from trying to setup a rails environment.
 
 First off you need to generate a self-signed SSL certificate.
 Steps 1-4 of [this gist](https://gist.github.com/trcarden/3295935) cover how to generate
@@ -36,12 +35,12 @@ server {
 }
 ```
 
-This assumes you've dumped the SSL certs you generated using the gist instructions in
+This assumes you've dumped the SSL certs you generated earlier into
 `/etc/nginx/ssl`. The headers the location block set are as follows:
 
 * `Host $host:$server_port` - Unless you pass this header rails will try to use ssl over whatever port its server was started on
-* `X-Real-IP $remote_addr` - This passes the ip address of the visitor to rails
-* `X-Forwarded-Ssl` / `X-Forwarded-Proto https` / `X-SSL 1` - Trying to tell rails in every way possible that this connection is actually over https
+* `X-Real-IP $remote_addr` - Does what it says on the tin
+* `X-Forwarded-Ssl` / `X-Forwarded-Proto https` / `X-SSL 1` - This tells Rails to use the automatically use the https protocol on all links
 
-Apparently if you want to have wildcard subdomains with ssl you need to have a separate `server` block for each
-subdomain, which seems a bit lame, but I don't have time to investigate whether this is true.
+Apparently if you want to have wildcard subdomains with SSL you need to have a separate `server` block for each
+subdomain, though I don't have time to check whether this is true.
