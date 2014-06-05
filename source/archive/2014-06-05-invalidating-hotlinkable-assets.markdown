@@ -24,8 +24,8 @@ so by default Cloudfront caches our assets until they expire, regardless of when
 To get around this we wrote [a small sinatra app](https://github.com/memberful/cloudfront-invalidator)
 that listens for pings from a webhook, and issues an invalidation request for the asset to cloudfront.
 (On a side note, Heroku only allow you to have one deployment webhook. We were already using ours to [log deploys
-to Librato](https://github.com/librato/librato-annotate), so we setup [papertrail](https://papertrail.com)
-to ping the webhook whenever it found a deployment event in the app's logs.)
+to Librato](https://github.com/librato/librato-annotate), so we setup a [papertrail](https://papertrail.com)
+webhook to ping the app whenever Heroku logged a deployment event.)
 
 Usually cloudfront invalidations take around 30 minutes to complete. This isn't terribly fast, but it's a darn
 sight faster than waiting for the asset to expire!
