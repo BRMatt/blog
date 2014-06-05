@@ -3,6 +3,8 @@
 @import "syntax-highlighting";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
+/* Couple of ideas borrowed from charlie.bz and the sass preboot for twentyten */
+
 html {
   font-size: 87.5%;
 }
@@ -109,6 +111,7 @@ section, article {
     @include rem('margin', 0 0 $vertical-baseline-1 0);
     line-height: $line-height;
   }
+  // Border at top idea borrowed from charlie.bz
   pre {
     border-top: 5px solid darken(#f8f8f8, 10);
     background-color: darken(#f8f8f8, 5);
