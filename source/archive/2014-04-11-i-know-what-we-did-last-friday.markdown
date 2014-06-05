@@ -1,5 +1,6 @@
 ---
 title: I know what we did last Friday
+date: 2014-4-11 15:45:25.000000000 +01:00
 ---
 
 If there's one tool I couldn't live without in our production app, it's logging.
