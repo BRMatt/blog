@@ -146,6 +146,17 @@ section, article {
   li {
     @include rem('margin', 0 0 0 $vertical-baseline-1);
   }
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 70%;
+  }
+
+  @media screen and (max-width: 400px) {
+    img {
+      max-width: 100%;
+    }
+  }
 }
 
 article {
